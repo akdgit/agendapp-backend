@@ -1,7 +1,6 @@
-import crypto from "crypto";
 import nodemailer from "nodemailer";
 import { getConnection } from  "../database/database.js";
-import cryptos, { hash } from "crypto";
+import cryptos from "crypto";
 
 const checkEmailExists = async (req, res) => {
     try {
