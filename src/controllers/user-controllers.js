@@ -1,5 +1,5 @@
 import { getConnection } from  "../database/database.js";
-import crypto, { hash } from "crypto";
+import crypto from "crypto";
 //import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { promisify } from "util";
