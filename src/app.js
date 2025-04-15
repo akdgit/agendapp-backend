@@ -26,11 +26,22 @@ app.listen(PORT, '0.0.0.0', () => {
 });*/
 //middleware
 
+const allowedOrigins = [
+  'http://192.168.10.16:3000', // Desarrollo local
+  'https://agendapp-frontend.vercel.app' // Producción
+];
+
 app.use(cors({
-  origin: '  http://192.168.10.16:3000', // Puedes reemplazar '*' por 'http://192.168.10.4:3000' para mayor seguridad
+  origin: allowedOrigins,
   methods: ['GET', 'POST', 'PATCH', 'DELETE'],
   credentials: true
 }));
+
+/*app.use(cors({
+  origin: '  http://192.168.10.16:3000', // Puedes reemplazar '*' por 'http://192.168.10.4:3000' para mayor seguridad
+  methods: ['GET', 'POST', 'PATCH', 'DELETE'],
+  credentials: true
+}));*/
 /*app.use(cors({
     origin: "http://localhost:3000",
     credentials: true,
