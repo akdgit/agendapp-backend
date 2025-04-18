@@ -2,10 +2,10 @@ import mysql from "promise-mysql";
 import config from "../config.js";
 
 const  connection = mysql.createPool({
-    host: config.host,
-    database: config.database,
-    user: config.user,
-    password: config.password,
+    host: config.database.host,
+    database: config.database.database,
+    user: config.database.user,
+    password: config.database.password,
     timezone: "local"
 });
 
