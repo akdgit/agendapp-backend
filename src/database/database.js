@@ -3,9 +3,10 @@ import config from "../config.js";
 
 const  connection = mysql.createPool({
     host: config.database.host,
-    database: config.database.database,
+    port: config.database.port,
     user: config.database.user,
     password: config.database.password,
+    database: config.database.database,
     timezone: "local"
 });
 
