@@ -150,7 +150,7 @@ const checkActiveStatus = async (req, res) => {
         }
 
         //res.json({ active: result[0].active });
-        res.json({ active: Boolean(result[0].active) });
+        res.json({ active: Boolean(rows[0].active) });
     } catch (error) {
         res.status(500).send(error.message);
     }
