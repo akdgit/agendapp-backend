@@ -143,9 +143,9 @@ const checkActiveStatus = async (req, res) => {
     try {
         const { email } = req.body;
         const connection = await getConnection();
-        const result = await connection.query("SELECT active FROM users WHERE email = ?", [email]);
+        const [rows] = await connection.query("SELECT active FROM users WHERE email = ?", [email]);
 
-        if (result.length === 0) {
+        if (rows.length === 0) {
             return res.status(404).json({ message: "Usuario no encontrado" });
         }
 
