@@ -192,13 +192,13 @@ const loginUser = async (req, res) => {
         }
 
         const connection = await getConnection();
-        const result = await connection.query("SELECT * FROM users WHERE email = ?", [email]);
+        const [ rows ] = await connection.query("SELECT * FROM users WHERE email = ?", [email]);
 
-        if (result.length === 0) {
+        if (rows.length === 0) {
             return res.status(401).json({ message: "Email o contraseña inválidos" });
         }
 
-        const user = result[0];
+        const user = rows[0];
 
         // Verificar si la cuenta está desactivada
         if (!user.active) {
