@@ -16,19 +16,25 @@ const getUsers = async(req, res) => {
     }
 };
 
-const getUser = async(req, res) => {
+const getUser = async (req, res) => {
     try {
-        console.log(req.params);
         const { id } = req.params;
         const connection = await getConnection();
-        const result = await connection.query("SELECT id, name, fullname, email, password FROM users WHERE id = ?", id);
-        console.log(result);
-        res.json(result); 
+        const result = await connection.query(
+            "SELECT id, name, fullname, email FROM users WHERE id = ?",
+            [id]
+        );
+
+        if (result.length === 0) {
+            return res.status(404).json({ message: "Usuario no encontrado" });
+        }
+
+        res.json(result[0]); // ✅ Envía solo el objeto, no el array completo
     } catch (error) {
-        res.status(500);
-        res.send(error.message);
+        res.status(500).send(error.message);
     }
 };
+
 
 /*const addUser = async (req, res) => {
     try {
