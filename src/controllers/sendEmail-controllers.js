@@ -49,9 +49,9 @@ const sendRecoveryEmailCode = async (req, res) => {
     try {
         // Enviar el correo
         await transporter.sendMail(mailOptions);
-        res.json({ message: "Código enviado al correo.", code });
+        res.json({ message: "Código enviado a su correo.", code });
     } catch (error) {
-        console.error("Error al enviar el correo:", error);
+        console.error("Error al enviar el código al correo:", error);
         res.status(500).json({ message: "Error al enviar el correo." });
     }
 };
